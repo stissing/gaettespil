@@ -1,0 +1,74 @@
+
+/* Tweak navbar brand link to be super sleek, inspired by docs.css at twitter-bootstrap
+-------------------------------------------------- */
+body {
+  padding-top: 60px;
+}
+
+#login {
+  padding: 20px 0px 0px 0px;
+}
+
+#login-form {
+  padding-left: 40px;
+}
+
+#signup-form {
+  padding-left: 60px;
+}
+
+#sign-up {
+  /*padding-top: 20px;*/
+}
+
+#coupon legend {
+  border-bottom-width: 0px;
+}
+
+#coupon .match {
+  margin: 10px 20px 10px 30px;
+}
+
+#coupon .input-small {
+  width: 20px;
+  margin: 0px 0px 0px 0px;
+}
+
+#coupon img {
+  vertical-align: middle;
+}
+
+#coupon option {
+  /*background-color: red;
+  background-image: url("http://img.uefa.com/imgml/flags/32x32/den.png");*/
+  background-image: url("/assets/glyphicons-halflings.png");
+  background-position: 14px 14px;
+  background-repeat: no-repeat;  
+  /*background-image: url(http://img.uefa.com/imgml/flags/32x32/den.png); padding-left:15px; }  */
+}
+
+#coupon .flag :hover {
+  width: 50px;
+  height: 50px;
+}
+
+.flag_selected {
+  width: 50px;
+  height: 50px;
+}
+
+.navbar-fixed-top .brand {
+  padding-right: 0;
+  padding-left: 0;
+  margin-left: 20px;
+  float: right;
+  font-weight: bold;
+  color: rgb(0,0,0);
+  text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.125);
+  -webkit-transition: all .2s linear;
+     -moz-transition: all .2s linear;
+          transition: all .2s linear;
+}
+.navbar-fixed-top .brand:hover {
+  text-decoration: none;
+}

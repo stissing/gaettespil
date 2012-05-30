@@ -1,4 +1,19 @@
 Gaettespil::Application.routes.draw do
+  get "memberships/create"
+
+  get "groups/index"
+
+  get "static/front"
+
+  resources :sessions, only: [:create, :destroy]
+  resources :users, only: [:create, :show]
+  resources :groups, only: [:index]
+  resources :memberships, only: [:create]
+  resources :coupons, only: [:create]
+
+
+  match '/signout', to: 'sessions#destroy', via: :delete
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -48,7 +63,7 @@ Gaettespil::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'static#front'
 
   # See how all your routes lay out with "rake routes"
 

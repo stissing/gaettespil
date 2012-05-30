@@ -7,8 +7,45 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="container">
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="#">Det store EM-gættespil</a>
+          <ul class="nav">
+            <% if signed_in? %>
+            <li class="">
+              <%= link_to "Mit gæt", user_path( current_user ) %>
+            </li>
+            <li>
+              <%= link_to "Grupper", groups_path %>
+            </li>
+            <li>
+              <%= link_to "Stillingen", groups_path %>
+            </li>
+            <% end %>
+            <li class="divider-vertical"></li>
+            <li class="">
+              <a href="./examples.html">Regler</a>
+            </li>
+            <% if signed_in? %>
+              <li class="pull-right">
+                <%= link_to "Log ud", signout_path, method: :delete %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div>
+      <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
+    </div>
 
-<%= yield %>
+    <%= yield %>
 
-</body>
+      <%= debug(params) if Rails.env.development? %>
+    </div>
+  </body>
 </html>
