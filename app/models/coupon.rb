@@ -23,9 +23,10 @@ class Coupon < ActiveRecord::Base
 
   validates :user, :presence => true
 
-  def score
-    "TODO"
-  end
+  # def score
+  #   "TODO" 
+  #0
+  # end
 
   private
 
@@ -34,6 +35,8 @@ class Coupon < ActiveRecord::Base
   end
 
   def everything
+    return if user and user.admin?
+    
     all_numbers = true
     GROUPS.each do |g|
       ROUNDS.each do |r|

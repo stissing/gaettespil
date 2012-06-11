@@ -128,6 +128,7 @@ ActiveRecord::Schema.define(:version => 20120312210838) do
     t.boolean  "s_16"
     t.boolean  "f_16"
     t.boolean  "w_16"
+    t.integer  "score",          :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

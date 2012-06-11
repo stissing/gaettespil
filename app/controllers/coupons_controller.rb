@@ -29,7 +29,6 @@ class CouponsController < ApplicationController
   end
 
   def require_tournament_not_started
-    return
     return if current_user == admin
 
     if !admin.coupon.home_score_a_1.nil?

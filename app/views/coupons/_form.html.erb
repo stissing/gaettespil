@@ -348,7 +348,9 @@
     </fieldset>
   </div>
   <div class="row">
-    <button type="submit" class="btn btn-large btn-success">Gæt!</button>
+    <% if @coupon.new_record? %>
+      <button type="submit" class="btn btn-large btn-success">Gæt!</button>
+    <% end %>
   </div>
 <% end %> 
 </div>

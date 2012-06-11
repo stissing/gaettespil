@@ -5,6 +5,7 @@ class ScoreCalculator
     ActiveRecord::Base.transaction do 
       Coupon.find_each do |coupon|
         update_score(coupon, correct)
+        coupon.save!
       end
     end
   end
@@ -18,8 +19,8 @@ class ScoreCalculator
 
   def update_match_scores(coupon, final)
     coupon.score = 0
-    GROUPS.each do |g|
-      ROUNDS.each do |r|
+    Coupon::GROUPS.each do |g|
+      Coupon::ROUNDS.each do |r|
         group = g.downcase
         fh = final.send("home_score_#{group}_#{r}")
         fa = final.send("away_score_#{group}_#{r}")
@@ -41,7 +42,7 @@ class ScoreCalculator
             coupon.score += 3
           end
 
-          coupon.score -= abs(h-fh) + abs(a-fa)
+          coupon.score -= (h-fh).abs + (a-fa).abs
         end
       end
     end
