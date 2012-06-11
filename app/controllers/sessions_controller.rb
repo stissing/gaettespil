@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  skip_before_filter :require_log_in
+  
   def create
     session = params[:session]
     email = session[:email]
@@ -9,7 +11,7 @@ class SessionsController < ApplicationController
       flash[:success] = "Du er inde"
       redirect_to user
     else
-      flash[:error] = "Hvad er det du leder efter?"
+      flash[:error] = "Du kan ikke kom ind her i den mundering"
       redirect_to root_path
     end
   end

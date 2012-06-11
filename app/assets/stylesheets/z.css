@@ -47,15 +47,25 @@ body {
   /*background-image: url(http://img.uefa.com/imgml/flags/32x32/den.png); padding-left:15px; }  */
 }
 
-#coupon .flag :hover {
-  width: 50px;
-  height: 50px;
+#coupon .flag:hover {
+  /*width: 20%;*/
+  width: 40px;
+  height: 40px;
 }
 
-.flag_selected {
-  width: 50px;
-  height: 50px;
+.flag_selected, .flag_selected:hover {
+  width: 40px;
+  height: 40px;
 }
+
+.team_1 {
+  /*content: " ";
+  background: url(http://img.uefa.com/imgml/flags/32x32/den.png);*/
+}
+
+/*.flag {
+  width: 10%;
+}*/
 
 .navbar-fixed-top .brand {
   padding-right: 0;
@@ -71,4 +81,40 @@ body {
 }
 .navbar-fixed-top .brand:hover {
   text-decoration: none;
+}
+
+input[type=checkbox] {
+    display:none;
+    width: 52px;
+    height: 52px;
+}
+
+input[type=checkbox] + label
+{
+  background: url(http://img.uefa.com/imgml/flags/32x32/den.png) no-repeat;
+  /*background: #999;*/
+  height: 32px;
+  width: 32px;
+  display:inline-block;
+  padding: 0 0 0 0px;
+}
+   
+input[type=checkbox]:checked + label
+{
+  /*background: #DDD url() repeat/repeat-x/repeat-y/no-repeat scroll/fixed top left/top center/top right/center left/center center/center right/bottom left/bottom center/bottom right/x-% y-%/x-pos y-pos;
+  *//*background: url(http://img.uefa.com/imgml/flags/32x32/den.png);*/
+  height: 52px;
+  width: 52px;
+  background-size: 52px 52px;
+
+  display:inline-block;
+  padding: 0 0 0 0px;
+}
+
+.row {
+  text-align: center;
+}
+
+.field_with_errors {
+  display: inline-block;
 }

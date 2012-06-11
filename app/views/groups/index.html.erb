@@ -1,33 +1,43 @@
 <h1>Grupper</h1>
 
 <div class="row">
-    <%= form_for(Group.new, url: memberships_path, html: { class: 'well form-inline', id: 'membership-form' } ) do |f| %> 
+    <div class="span6">
+      <%= form_for(Group.new, url: memberships_path, html: { class: 'well form-inline', id: 'membership-form' } ) do |f| %> 
+          <%= f.text_field :name, placeholder: 'gruppenavn', class: 'input-small' %>
+          <%= f.text_field :password, placeholder: 'gruppekode', class: 'input-small' %>
+          <button class="btn btn-success" name="commit" type="submit">
+            <i class="icon-plus icon-white"></i>
+            Tilmeld til gruppe
+          </button>
+       <% end %>
+     </div>
+     <div class="span6">
+    <%= form_for(Group.new, html: { class: 'well form-inline', id: 'membership-form' } ) do |f| %> 
         <%= f.text_field :name, placeholder: 'gruppenavn', class: 'input-small' %>
         <%= f.text_field :password, placeholder: 'gruppekode', class: 'input-small' %>
         <button class="btn btn-warning" name="commit" type="submit">
-          <i class="icon-plus icon-white"></i>
-          Tilmeld
+          <i class="icon-heart icon-white"></i>
+          Opret en gruppe
         </button>
      <% end %>
+   </div>
 </div>
 
 <% @groups.each do |group| %>
-<table class="table">
- <thead>
-    <tr>
-      <th><%= group.name %></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>4</td>
-    </tr>
-  </tbody>
-</table>
+  <table class="table">
+   <thead>
+      <tr>
+        <th><%= group.name %></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% group.users.each do |user| %>
+        <tr>
+          <td><%= link_to user.name, user %></td>
+          <td><%= link_to user.score, user %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 <% end %>

@@ -21,6 +21,14 @@ module SessionsHelper
     @current_user = user
   end
 
+  def admin
+    User.admin
+  end
+
+  def admin?
+    admin == current_user
+  end  
+
   private
   
   def user_from_session

@@ -16,6 +16,18 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   validates :password, length: { minimum: 6 }
 
+  def self.admin
+    find_by_email('martinstissing@gmail.com')
+  end
+
+  def admin?
+    email == "martinstissing@gmail.com"
+  end
+
+  def score
+    self.coupon && self.coupon.score
+  end
+
   def authenticate(unencrypted_password)
     if BCrypt::Password.new(password_digest) == unencrypted_password
       self
@@ -30,4 +42,5 @@ class User < ActiveRecord::Base
       self.password_digest = BCrypt::Password.create(unencrypted_password)
     end
   end
+
 end

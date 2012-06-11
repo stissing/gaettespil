@@ -1,15 +1,17 @@
 Gaettespil::Application.routes.draw do
   get "memberships/create"
-
   get "groups/index"
-
   get "static/front"
+
+
+  match "/rules", to: "static#rules"
+  match "/update_scores", to: "static#update_scores"
 
   resources :sessions, only: [:create, :destroy]
   resources :users, only: [:create, :show]
-  resources :groups, only: [:index]
+  resources :groups, only: [:index, :create]
   resources :memberships, only: [:create]
-  resources :coupons, only: [:create]
+  resources :coupons#, only: [:create]
 
 
   match '/signout', to: 'sessions#destroy', via: :delete

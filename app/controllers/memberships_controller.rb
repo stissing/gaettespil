@@ -5,8 +5,12 @@ class MembershipsController < ApplicationController
     if(group.nil?)
       flash[:info] = "Den gruppe er vist ikke nem at finde"
     else
-      Membership.find_by_user_id_and_group_id( current_user.id, group.id )
-      flash[:success] = "Du er med"
+      if(Membership.find_by_user_id_and_group_id( current_user.id, group.id ))
+        flash[:info] = "Du er skisme allerede med"
+      else
+        flash[:success] = "Du er med"
+        current_user.groups << group
+      end
     end
     #membership = Membership.find_or_create_by_user(_and_group( current_user, group ))
 
