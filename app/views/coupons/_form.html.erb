@@ -348,7 +348,7 @@
     </fieldset>
   </div>
   <div class="row">
-    <% if @coupon.new_record? %>
+    <% if @coupon.new_record? || admin? %>
       <button type="submit" class="btn btn-large btn-success">Gæt!</button>
     <% end %>
   </div>
