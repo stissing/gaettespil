@@ -13,12 +13,21 @@ class ScoreCalculator
   private 
   
   def update_score(coupon, final)
+    coupon.score = 0
     update_match_scores(coupon, final)
+    update_final_scores(coupon, final)
+  end
+
+  def update_final_scores(coupon, final)
+    (1..16).each do |i|
+      ["q", "s", "f", "w"].each do |round|
+        coupon.score += 5 if final.send("#{round}_#{i}") && coupon.send("#{round}_#{i}")
+      end
+    end
   end
 
 
   def update_match_scores(coupon, final)
-    coupon.score = 0
     Coupon::GROUPS.each do |g|
       Coupon::ROUNDS.each do |r|
         group = g.downcase
