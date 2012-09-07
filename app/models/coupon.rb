@@ -1,6 +1,6 @@
 class Coupon < ActiveRecord::Base
-  GROUPS = ["A","B","C","D"]
-  ROUNDS = [1,2,3,4,5,6]
+  GROUPS = ["A","B","C","D","E","F","G","H"]
+  ROUNDS = (1..12).to_a
   
   GROUPS.each do |g|
     ROUNDS.each do |r|

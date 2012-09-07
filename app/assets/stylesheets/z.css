@@ -3,6 +3,29 @@
 -------------------------------------------------- */
 body {
   padding-top: 60px;
+  background-color: rgba(3,3,3,1);
+}
+
+#welcome {
+  background: url("front.jpg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  height: 480px;
+  width: 940px;
+}
+
+#welcome h1 {
+  padding-top: 180px;
+  color: rgba(244, 244, 244, 0.91);
+}
+
+blockquote {
+  padding-top: 10px;
+  border: none;
+}
+blockquote.pull-right {
+  border: none;
+  padding-top: 10px;
 }
 
 #login {

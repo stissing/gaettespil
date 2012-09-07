@@ -1,6 +1,6 @@
 <div class="row" id="coupon">
 
-  <%= form_for(@coupon, html: { class: '', id: 'coupon-form' } ) do |f| %> 
+  <%= form_for(@coupon, html: { class: '', id: 'coupon-form' }, :builder => CouponFormBuilder ) do |f| %> 
 
     <% if @coupon.errors.any? %>
       <div id="error_explanation">
@@ -13,229 +13,54 @@
     <% end %>
 
     <div class="row" id="groupround">
-      <div class="span3">
+<div class="span4"></div>
+
+<% 4.times do %>
+      <div class="span1">
         <fieldset>
           <legend>Gruppe A</legend>
-
-          <div class="match">
-            <img src="http://img.uefa.com/imgml/flags/32x32/pol.png" title="Poland">
-            <%= f.text_field "home_score_a_1", :class => "input-small" %>
-            :
-            <%= f.text_field "away_score_a_1", :class => "input-small" %>
-            <img src="http://img.uefa.com/imgml/flags/32x32/gre.png" title="Greece">
-          </div>
-
-          <div class="match">
-            <img src="http://img.uefa.com/imgml/flags/32x32/rus.png" title="Russia">
-            <%= f.text_field "home_score_a_2", :class => "input-small" %>
-            :
-            <%= f.text_field "away_score_a_2", :class => "input-small" %>
-            <img src="http://img.uefa.com/imgml/flags/32x32/cze.png" title="Czech Republic">
-          </div>
-
-          <div class="match">
-            <img src="http://img.uefa.com/imgml/flags/32x32/gre.png" title="Greece">
-            <%= f.text_field "home_score_a_3", :class => "input-small" %>
-            :
-            <%= f.text_field "away_score_a_3", :class => "input-small" %>
-            <img src="http://img.uefa.com/imgml/flags/32x32/cze.png" title="Czech Republic">
-          </div>
-
-          <div class="match">
-            <img src="http://img.uefa.com/imgml/flags/32x32/pol.png" title="Poland">
-            <%= f.text_field "home_score_a_4", :class => "input-small" %>
-            :
-            <%= f.text_field "away_score_a_4", :class => "input-small" %>
-            <img src="http://img.uefa.com/imgml/flags/32x32/rus.png" title="Russia">
-          </div>
-
-          <div class="match">
-            <img src="http://img.uefa.com/imgml/flags/32x32/gre.png" title="Greece">
-            <%= f.text_field "home_score_a_5", :class => "input-small" %>
-            :
-            <%= f.text_field "away_score_a_5", :class => "input-small" %>
-            <img src="http://img.uefa.com/imgml/flags/32x32/rus.png" title="Russia">
-          </div>        
-
-          <div class="match">
-            <img src="http://img.uefa.com/imgml/flags/32x32/cze.png" title="Czech Republic">
-            <%= f.text_field "home_score_a_6", :class => "input-small" %>
-            :
-            <%= f.text_field "away_score_a_6", :class => "input-small" %>
-            <img src="http://img.uefa.com/imgml/flags/32x32/pol.png" title="Poland">
-          </div>        
-
+          <% [["Dinamo Zagreb","Porto"],
+              ["PSG","Dynamo Kyiv"],
+              ["Dynamo Kyiv","Dinamo Zagreb"],
+              ["Porto","PSG"],
+              ["Porto","Dynamo Kyiv"],
+              ["Dinamo Zagreb","PSG"],
+              ["Dynamo Kyiv","Porto"],
+              ["PSG","Dinamo Zagreb"],
+              ["Porto","Dinamo Zagreb"],
+              ["Dynamo Kyiv","PSG"],
+              ["Dinamo Zagreb","Dynamo Kyiv"],
+              ["PSG","Porto"]].each_with_index do |teams, index| %>
+                    <%= f.match(teams.first, teams.last, "A", index+1) %>
+          <% end %>
         </fieldset>
       </div>
 
-      <div class="span3">
+      <div class="span1">
         <fieldset>
           <legend>Gruppe B</legend>
-
-          <div class="match">
-            <img src="http://img.uefa.com/imgml/flags/32x32/ned.png" title="Netherlands">
-            <%= f.text_field "home_score_b_1", :class => "input-small" %>
-            :
-            <%= f.text_field "away_score_b_1", :class => "input-small" %>
-            <img src="http://img.uefa.com/imgml/flags/32x32/den.png" title="Denmark">
-          </div>
-
-          <div class="match">
-            <img src="http://img.uefa.com/imgml/flags/32x32/ger.png" title="Germany">
-            <%= f.text_field "home_score_b_2", :class => "input-small" %>
-            :
-            <%= f.text_field "away_score_b_2", :class => "input-small" %>
-            <img src="http://img.uefa.com/imgml/flags/32x32/por.png" title="Portugal">
-          </div>
-
-          <div class="match">
-            <img src="http://img.uefa.com/imgml/flags/32x32/den.png" title="Denmark">
-            <%= f.text_field "home_score_b_3", :class => "input-small" %>
-            :
-            <%= f.text_field "away_score_b_3", :class => "input-small" %>
-            <img src="http://img.uefa.com/imgml/flags/32x32/por.png" title="Portugal">
-          </div>
-
-          <div class="match">
-            <img src="http://img.uefa.com/imgml/flags/32x32/ned.png" title="Netherlands">
-            <%= f.text_field "home_score_b_4", :class => "input-small" %>
-            :
-            <%= f.text_field "away_score_b_4", :class => "input-small" %>
-            <img src="http://img.uefa.com/imgml/flags/32x32/ger.png" title="Germany">
-          </div>
-
-          <div class="match">
-            <img src="http://img.uefa.com/imgml/flags/32x32/por.png" title="Portugal">
-            <%= f.text_field "home_score_b_5", :class => "input-small" %>
-            :
-            <%= f.text_field "away_score_b_5", :class => "input-small" %>
-            <img src="http://img.uefa.com/imgml/flags/32x32/ned.png" title="Netherlands">
-          </div>        
-
-          <div class="match">
-            <img src="http://img.uefa.com/imgml/flags/32x32/den.png" title="Denmark">
-            <%= f.text_field "home_score_b_6", :class => "input-small" %>
-            :
-            <%= f.text_field "away_score_b_6", :class => "input-small" %>
-            <img src="http://img.uefa.com/imgml/flags/32x32/ger.png" title="Germany">
-          </div>        
-
+          <% [["Montpellier","Arsenal"],
+          ["Olympiacos","Schalke"],
+          ["Schalke","Montpellier"],
+          ["Arsenal","Olympiacos"],
+          ["Arsenal","Schalke"],
+          ["Montpellier","Olympiacos"],
+          ["Schalke","Arsenal"],
+          ["Olympiacos","Montpellier"],
+          ["Arsenal","Montpellier"],
+          ["Schalke","Olympiacos"],
+          ["Montpellier","Schalke"],
+          ["Olympiacos","Arsenal"]].each_with_index do |teams, index| %>
+                    <%= f.match(teams.first, teams.last, "B", index+1) %>
+          <% end %>
         </fieldset>
       </div>
-
-      <div class="span3">
-        <fieldset>
-          <legend>Gruppe C</legend>
-
-          <div class="match">
-            <img src="http://img.uefa.com/imgml/flags/32x32/esp.png" title="Spain">
-            <%= f.text_field "home_score_c_1", :class => "input-small" %>
-            :
-            <%= f.text_field "away_score_c_1", :class => "input-small" %>
-            <img src="http://img.uefa.com/imgml/flags/32x32/ita.png" title="Italy">
-          </div>
-
-          <div class="match">
-            <img src="http://img.uefa.com/imgml/flags/32x32/irl.png" title="Republic of Ireland">
-            <%= f.text_field "home_score_c_2", :class => "input-small" %>
-            :
-            <%= f.text_field "away_score_c_2", :class => "input-small" %>
-            <img src="http://img.uefa.com/imgml/flags/32x32/cro.png" title="Croatia">
-          </div>
-
-          <div class="match">
-            <img src="http://img.uefa.com/imgml/flags/32x32/ita.png" title="Italy">
-            <%= f.text_field "home_score_c_3", :class => "input-small" %>
-            :
-            <%= f.text_field "away_score_c_3", :class => "input-small" %>
-            <img src="http://img.uefa.com/imgml/flags/32x32/cro.png" title="Croatia">
-          </div>
-
-          <div class="match">
-            <img src="http://img.uefa.com/imgml/flags/32x32/esp.png" title="Spain">
-            <%= f.text_field "home_score_c_4", :class => "input-small" %>
-            :
-            <%= f.text_field "away_score_c_4", :class => "input-small" %>
-            <img src="http://img.uefa.com/imgml/flags/32x32/irl.png" title="Republic of Ireland">
-          </div>
-
-          <div class="match">
-            <img src="http://img.uefa.com/imgml/flags/32x32/cro.png" title="Croatia">
-            <%= f.text_field "home_score_c_5", :class => "input-small" %>
-            :
-            <%= f.text_field "away_score_c_5", :class => "input-small" %>
-            <img src="http://img.uefa.com/imgml/flags/32x32/esp.png" title="Spain">
-          </div>        
-
-          <div class="match">
-            <img src="http://img.uefa.com/imgml/flags/32x32/ita.png" title="Italy">
-            <%= f.text_field "home_score_c_6", :class => "input-small" %>
-            :
-            <%= f.text_field "away_score_c_6", :class => "input-small" %>
-            <img src="http://img.uefa.com/imgml/flags/32x32/irl.png" title="Republic of Ireland">
-          </div>        
-
-        </fieldset>
-      </div>
-
-      <div class="span3">
-        <fieldset>
-          <legend>Gruppe D</legend>
-
-          <div class="match">
-            <img src="http://img.uefa.com/imgml/flags/32x32/fra.png" title="France">
-            <%= f.text_field "home_score_d_1", :class => "input-small" %>
-            :
-            <%= f.text_field "away_score_d_1", :class => "input-small" %>
-            <img src="http://img.uefa.com/imgml/flags/32x32/eng.png" title="England">
-          </div>
-
-          <div class="match">
-            <img src="http://img.uefa.com/imgml/flags/32x32/ukr.png" title="Ukraine">
-            <%= f.text_field "home_score_d_2", :class => "input-small" %>
-            :
-            <%= f.text_field "away_score_d_2", :class => "input-small" %>
-            <img src="http://img.uefa.com/imgml/flags/32x32/swe.png" title="Sweden">
-          </div>
-
-          <div class="match">
-            <img src="http://img.uefa.com/imgml/flags/32x32/ukr.png" title="Ukraine">
-            <%= f.text_field "home_score_d_3", :class => "input-small" %>
-            :
-            <%= f.text_field "away_score_d_3", :class => "input-small" %>
-            <img src="http://img.uefa.com/imgml/flags/32x32/fra.png" title="France">
-          </div>
-
-          <div class="match">
-            <img src="http://img.uefa.com/imgml/flags/32x32/swe.png" title="Sweden">
-            <%= f.text_field "home_score_d_4", :class => "input-small" %>
-            :
-            <%= f.text_field "away_score_d_4", :class => "input-small" %>
-            <img src="http://img.uefa.com/imgml/flags/32x32/eng.png" title="England">
-          </div>
-
-          <div class="match">
-            <img src="http://img.uefa.com/imgml/flags/32x32/swe.png" title="Sweden">
-            <%= f.text_field "home_score_d_5", :class => "input-small" %>
-            :
-            <%= f.text_field "away_score_d_5", :class => "input-small" %>
-            <img src="http://img.uefa.com/imgml/flags/32x32/fra.png" title="France">
-          </div>        
-
-          <div class="match">
-            <img src="http://img.uefa.com/imgml/flags/32x32/eng.png" title="England">
-            <%= f.text_field "home_score_d_6", :class => "input-small" %>
-            :
-            <%= f.text_field "away_score_d_6", :class => "input-small" %>
-            <img src="http://img.uefa.com/imgml/flags/32x32/ukr.png" title="Ukraine">
-          </div>        
-
-        </fieldset>
-      </div>
+      <% end %>
+<div class="span4"></div>
     </div>
 
-   <div class="row" id="quarters">
-     <div class="span3">
+<!--   <div class="row" id="quarters">
+     <div class="span1">
       <fieldset>
         <legend>Vælg top 2 fra A</legend>
          <%= f.check_box :q_1, :id => "q_1" %><label for="q_1" style="background: url(http://img.uefa.com/imgml/flags/32x32/pol.png);"></label>
@@ -244,7 +69,7 @@
          <%= f.check_box :q_4, :id => "q_4" %><label for="q_4" style="background: url(http://img.uefa.com/imgml/flags/32x32/cze.png);"></label>
       </fieldset>
     </div>  
-     <div class="span3">
+     <div class="span1">
       <fieldset>
         <legend>Vælg top 2 fra B</legend>
          <%= f.check_box :q_5, :id => "q_5" %><label for="q_5" style="background: url(http://img.uefa.com/imgml/flags/32x32/ned.png);"></label>
@@ -253,7 +78,7 @@
          <%= f.check_box :q_8, :id => "q_8" %><label for="q_8" style="background: url(http://img.uefa.com/imgml/flags/32x32/por.png);"></label>
       </fieldset>
     </div>  
-     <div class="span3">
+     <div class="span1">
       <fieldset>
         <legend>Vælg top 2 fra C</legend>
          <%= f.check_box :q_9, :id => "q_9" %><label for="q_9" style="background: url(http://img.uefa.com/imgml/flags/32x32/esp.png);"></label>
@@ -262,7 +87,7 @@
          <%= f.check_box :q_12, :id => "q_12" %><label for="q_12" style="background: url(http://img.uefa.com/imgml/flags/32x32/cro.png);"></label>
       </fieldset>
     </div>  
-     <div class="span3">
+     <div class="span1">
       <fieldset>
         <legend>Vælg top 2 fra D</legend>
          <%= f.check_box :q_13, :id => "q_13" %><label for="q_13" style="background: url(http://img.uefa.com/imgml/flags/32x32/ukr.png);"></label>
@@ -346,7 +171,7 @@
        <%= f.check_box :w_16, :id => "w_16" %><label for="w_16" style="background: url(http://img.uefa.com/imgml/flags/32x32/eng.png);"></label>
       </div>
     </fieldset>
-  </div>
+  </div> -->
   <div class="row">
     <% if @coupon.new_record? || admin? %>
       <button type="submit" class="btn btn-large btn-success">Gæt!</button>

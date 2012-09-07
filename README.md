@@ -1,3 +1,3 @@
-# Det store EM-gættespil
+# Det store Champions League gættespil
 
 Gæt. Og konkurrer.
